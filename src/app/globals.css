@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors - Psychology Professional */
+  --color-primary: #4a4e63;
+  --color-primary-light: #6b6f88;
+  --color-primary-dark: #36394a;
+  --color-accent-warm: #9b6b5e;
+  --color-accent-cool: #6b8b9b;
+  
+  /* Neutral & Surface */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #1a1f2e;
+  --color-text-secondary: #525968;
+  --color-text-muted: #7a8190;
+  --color-text-light: #9ca3b0;
+  
+  /* Borders & Dividers */
+  --color-border: #f0f1f3;
+  --color-border-subtle: #e8eaee;
+  --color-border-strong: #d9dce3;
+  
+  /* Backgrounds - Section Variations */
+  --color-soft-cool: #f3f6fa;
+  --color-soft-warm: #f9f5f0;
+  --color-soft-neutral: #f2f4f7;
+  --color-soft: #f4f5f7;
+  
+  /* Semantic Colors */
+  --color-brand: #4a4e63;
+  --color-accent: #8b6d5e;
+  
+  /* Section Backgrounds - Professional with Clear Distinction */
+  --color-band-hero: #ffffff;
+  --color-band-about: #f9f6f3;
+  --color-band-services: #f3f7fb;
+  --color-band-pricing: #faf9f7;
+  --color-band-process: #f7f8fa;
+  --color-band-practical: #f8f6f2;
+  --color-band-schedule: #faf8f6;
+  --color-band-locations: #f5f8fc;
+  --color-band-low-cost: #f7faf8;
+  --color-band-cta: #4a4e63;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-body-family);
+  --font-heading: var(--font-heading-family);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  background-image: none;
+  color: var(--color-text);
+  font-family: var(--font-body-family), sans-serif;
+  letter-spacing: -0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(74, 78, 99, 0.15);
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

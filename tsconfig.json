@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "react-hook-form": ["./src/vendor/react-hook-form"],
+      "@hookform/resolvers/zod": ["./src/vendor/zod-resolver"]
     }
   },
   "include": [

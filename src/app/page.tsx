@@ -15,7 +15,7 @@ function SectionBand({
   children: ReactNode;
   className: string;
 }) {
-  return <div className={`border-t border-[var(--color-border)] ${className}`}>{children}</div>;
+  return <div className={className}>{children}</div>;
 }
 
 export default function HomePage() {

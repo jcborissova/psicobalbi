@@ -1,22 +1,18 @@
 import { Container } from "@/components/layout/container";
 import { SectionHeading } from "@/components/section-heading";
+import { buttonStyles } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
 
 const featuredServices = siteConfig.services.items.filter((service) => service.featuredOnHome);
 const servicesToDisplay = (featuredServices.length > 0 ? featuredServices : siteConfig.services.items).slice(
   0,
-  3,
+  4,
 );
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="relative overflow-hidden bg-[var(--color-band-services)] py-16 sm:py-20 lg:py-28">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-36 -left-36 h-72 w-72 rounded-full bg-[var(--color-accent-cool)] blur-3xl opacity-[0.06]" />
-        <div className="absolute -right-32 -bottom-36 h-72 w-72 rounded-full bg-[var(--color-primary)] blur-3xl opacity-[0.04]" />
-      </div>
-
+    <section id="servicios" className="bg-[var(--color-band-services)] py-14 sm:py-16 lg:py-24">
       <Container>
         <SectionHeading
           eyebrow={siteConfig.services.eyebrow}
@@ -24,48 +20,48 @@ export function ServicesSection() {
           description={siteConfig.services.description}
           align="center"
           eyebrowTone="cool"
-          className="relative z-10 mx-auto max-w-3xl"
+          className="mx-auto max-w-3xl"
         />
 
-        <p className="relative z-10 mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-[var(--color-text-muted)]">
-          Modalidad presencial y virtual, con agenda coordinada y objetivos terapéuticos claros desde el inicio.
-        </p>
-
-        <div className="relative z-10 mt-10 grid gap-6 sm:mt-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:gap-5">
           {servicesToDisplay.map((service, idx) => (
             <Card
               key={service.title}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-white/96 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent-cool)] hover:shadow-[0_18px_40px_rgba(74,78,99,0.12)]"
+              className="group flex h-full flex-col overflow-hidden border border-[var(--color-border-subtle)] bg-white transition-all duration-300 hover:border-[var(--color-primary-light)]"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--color-accent-cool)] to-[var(--color-primary-light)]" />
-
-              <CardContent className="relative flex h-full flex-col p-7 sm:p-8">
+              <CardContent className="flex h-full flex-col p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[color-mix(in_oklab,var(--color-accent-cool),white_88%)] text-sm font-bold text-[var(--color-accent-cool)]">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--color-border-subtle)] bg-[var(--color-soft)] text-sm font-semibold text-[var(--color-text-secondary)]">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
 
                   {service.tag ? (
-                    <span className="inline-flex rounded-full bg-[var(--color-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">
+                    <span className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-white px-2.5 py-1 text-[11px] text-[var(--color-text-muted)]">
                       {service.tag}
                     </span>
                   ) : null}
                 </div>
 
-                <h3 className="mt-6 font-heading text-2xl leading-tight text-[var(--color-text)] sm:text-[1.85rem]">
+                <h3 className="mt-5 font-heading text-[1.45rem] leading-tight text-[var(--color-text)] sm:text-[1.6rem]">
                   {service.title}
                 </h3>
 
-                <p className="mt-4 flex-1 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
+                <p className="mt-3 flex-1 text-[15px] leading-7 text-[var(--color-text-secondary)]">
                   {service.description}
                 </p>
 
-                <div className="mt-6 border-t border-[var(--color-border-subtle)] pt-4">
-                  <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-[var(--color-text-muted)]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-cool)]" />
-                    Abordaje personalizado
-                  </p>
-                </div>
+                <a
+                  href={siteConfig.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonStyles({
+                    variant: "outline",
+                    size: "md",
+                    className: "mt-5 w-full justify-center",
+                  })}
+                >
+                  {siteConfig.hero.primaryCtaLabel}
+                </a>
               </CardContent>
             </Card>
           ))}

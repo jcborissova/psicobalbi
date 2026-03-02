@@ -1,47 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* Primary Colors - Psychology Professional */
+  /* Primary Colors - Calm premium therapy */
   --color-primary: #4a4e63;
   --color-primary-light: #6b6f88;
   --color-primary-dark: #36394a;
-  --color-accent-warm: #9b6b5e;
-  --color-accent-cool: #6b8b9b;
-  
+  --color-accent-warm: #8e6b5f;
+  --color-accent-cool: #5f7f92;
+
   /* Neutral & Surface */
   --color-bg: #ffffff;
   --color-surface: #ffffff;
   --color-text: #1a1f2e;
-  --color-text-secondary: #525968;
-  --color-text-muted: #7a8190;
-  --color-text-light: #9ca3b0;
-  
+  --color-text-secondary: #4d5565;
+  --color-text-muted: #667085;
+  --color-text-light: #8a93a4;
+
   /* Borders & Dividers */
-  --color-border: #f0f1f3;
-  --color-border-subtle: #e8eaee;
-  --color-border-strong: #d9dce3;
-  
+  --color-border: #d7dde7;
+  --color-border-subtle: #cfd6e2;
+  --color-border-strong: #aeb8c8;
+
   /* Backgrounds - Section Variations */
-  --color-soft-cool: #f3f6fa;
-  --color-soft-warm: #f9f5f0;
-  --color-soft-neutral: #f2f4f7;
-  --color-soft: #f4f5f7;
-  
+  --color-soft-cool: #f2f6fa;
+  --color-soft-warm: #f8f2ee;
+  --color-soft-neutral: #f3f5f8;
+  --color-soft: #f4f6f8;
+
   /* Semantic Colors */
   --color-brand: #4a4e63;
   --color-accent: #8b6d5e;
-  
-  /* Section Backgrounds - Professional with Clear Distinction */
+
+  /* Section Backgrounds */
   --color-band-hero: #ffffff;
   --color-band-about: #f9f6f3;
-  --color-band-services: #f3f7fb;
+  --color-band-services: #f2f7fb;
   --color-band-pricing: #faf9f7;
-  --color-band-process: #f7f8fa;
+  --color-band-process: #f6f8fa;
   --color-band-practical: #f8f6f2;
   --color-band-schedule: #faf8f6;
-  --color-band-locations: #f5f8fc;
+  --color-band-locations: #f4f8fc;
   --color-band-low-cost: #f7faf8;
-  --color-band-cta: #4a4e63;
+  --color-band-cta: #454b63;
 }
 
 @theme inline {
@@ -64,13 +64,13 @@ body {
   background-image: none;
   color: var(--color-text);
   font-family: var(--font-body-family), sans-serif;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(74, 78, 99, 0.15);
+  background: rgba(74, 78, 99, 0.16);
   color: var(--color-text);
 }
 

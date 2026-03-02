@@ -30,7 +30,12 @@ export function SectionHeading({
     <div className={cn("space-y-4", isCentered && "mx-auto text-center", className)}>
       {eyebrow ? (
         <div className="inline-block">
-          <p className={cn("text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full", eyebrowToneClasses[eyebrowTone])}>
+          <p
+            className={cn(
+              "rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]",
+              eyebrowToneClasses[eyebrowTone],
+            )}
+          >
             {eyebrow}
           </p>
         </div>
@@ -38,7 +43,7 @@ export function SectionHeading({
 
       <h2
         className={cn(
-          "max-w-[22ch] font-heading text-3xl sm:text-4xl lg:text-5xl font-light leading-tight text-[var(--color-text)]",
+          "max-w-[22ch] font-heading text-[2rem] font-light leading-[1.12] tracking-[-0.015em] text-[var(--color-text)] sm:text-[2.45rem] lg:text-[3rem]",
           isCentered && "mx-auto",
         )}
       >
@@ -48,7 +53,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "max-w-[60ch] text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)]",
+            "max-w-[65ch] text-[15px] leading-7 text-[var(--color-text-secondary)] sm:text-base",
             isCentered && "mx-auto",
           )}
         >

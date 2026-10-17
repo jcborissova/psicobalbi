@@ -2,46 +2,46 @@
 
 :root {
   /* Primary Colors - Calm premium therapy */
-  --color-primary: #4a4e63;
-  --color-primary-light: #6b6f88;
-  --color-primary-dark: #36394a;
-  --color-accent-warm: #8e6b5f;
-  --color-accent-cool: #5f7f92;
+  --color-primary: #294b42;
+  --color-primary-light: #526c61;
+  --color-primary-dark: #183b32;
+  --color-accent-warm: #935b40;
+  --color-accent-cool: #526c61;
 
   /* Neutral & Surface */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-text: #1a1f2e;
-  --color-text-secondary: #4d5565;
-  --color-text-muted: #667085;
-  --color-text-light: #8a93a4;
+  --color-bg: #fcfaf6;
+  --color-surface: #fcfaf6;
+  --color-text: #233d35;
+  --color-text-secondary: #526158;
+  --color-text-muted: #606b62;
+  --color-text-light: #606b62;
 
   /* Borders & Dividers */
-  --color-border: #d7dde7;
-  --color-border-subtle: #cfd6e2;
-  --color-border-strong: #aeb8c8;
+  --color-border: #d8ded2;
+  --color-border-subtle: #d8ded2;
+  --color-border-strong: #7c897b;
 
   /* Backgrounds - Section Variations */
-  --color-soft-cool: #f2f6fa;
-  --color-soft-warm: #f8f2ee;
-  --color-soft-neutral: #f3f5f8;
-  --color-soft: #f4f6f8;
+  --color-soft-cool: #eaf0e6;
+  --color-soft-warm: #f3e9dc;
+  --color-soft-neutral: #f1f2ea;
+  --color-soft: #edf0e8;
 
   /* Semantic Colors */
-  --color-brand: #4a4e63;
-  --color-accent: #8b6d5e;
+  --color-brand: #294b42;
+  --color-accent: #935b40;
 
   /* Section Backgrounds */
-  --color-band-hero: #ffffff;
-  --color-band-about: #f9f6f3;
-  --color-band-services: #f2f7fb;
-  --color-band-pricing: #faf9f7;
-  --color-band-process: #f6f8fa;
-  --color-band-practical: #f8f6f2;
+  --color-band-hero: #fcfaf6;
+  --color-band-about: #f3efe6;
+  --color-band-services: #fcfaf6;
+  --color-band-pricing: #f3efe6;
+  --color-band-process: #e8eee4;
+  --color-band-practical: #fcfaf6;
   --color-band-schedule: #faf8f6;
   --color-band-locations: #f4f8fc;
   --color-band-low-cost: #f7faf8;
-  --color-band-cta: #454b63;
+  --color-band-cta: #294b42;
 }
 
 @theme inline {
@@ -86,5 +86,52 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Shared editorial rhythm and accessible interaction treatment. */
+:root {
+  --color-border-control: #7c897b;
+  --color-focus-ring: #935b40;
+}
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 4px;
+}
+body {
+  line-height: 1.65;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+.section-space {
+  padding-block: 3.5rem;
+}
+.editorial-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-warm);
+}
+.text-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-underline-offset: 5px;
+}
+@media (min-width: 768px) {
+  .section-space {
+    padding-block: 5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-space {
+    padding-block: 6rem;
   }
 }

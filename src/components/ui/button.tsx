@@ -2,12 +2,15 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+export type ButtonVariant =
+  "primary" | "secondary" | "outline" | "ghost" | "inverse";
 export type ButtonSize = "sm" | "md" | "lg" | "icon";
 
 const variantClasses: Record<ButtonVariant, string> = {
+  inverse:
+    "bg-[#ecdfcc] text-[#233d35] hover:bg-white focus-visible:ring-white",
   primary:
-    "bg-[var(--color-primary)] text-white shadow-[0_2px_8px_rgba(74,78,99,0.12)] hover:bg-[var(--color-primary-dark)] hover:shadow-[0_4px_12px_rgba(74,78,99,0.16)] active:translate-y-px transition-all duration-200",
+    "bg-[var(--color-primary)] text-white shadow-none hover:bg-[var(--color-primary-dark)] hover:shadow-none active:translate-y-px transition-all duration-200",
   secondary:
     "bg-[var(--color-accent-warm)] text-white shadow-[0_2px_8px_rgba(142,107,95,0.12)] hover:bg-[color-mix(in_oklab,var(--color-accent-warm),black_7%)] hover:shadow-[0_4px_12px_rgba(142,107,95,0.16)] active:translate-y-px",
   outline:
@@ -33,21 +36,23 @@ export function buttonStyles({
   className?: string;
 } = {}) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50",
     variantClasses[variant],
     sizeClasses[size],
     className,
   );
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", type = "button", ...props }, ref) => {
+  (
+    { className, variant = "primary", size = "md", type = "button", ...props },
+    ref,
+  ) => {
     return (
       <button
         ref={ref}

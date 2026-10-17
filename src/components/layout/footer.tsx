@@ -1,135 +1,74 @@
 import Link from "next/link";
-
-import { BookingButton } from "@/components/booking-button";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/config/site";
-import { buildWhatsAppUrl } from "@/lib/whatsapp";
-
 export function Footer() {
-  const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsappNumber, siteConfig.whatsappMessage);
-
   return (
-    <footer className="border-t border-[var(--color-border-subtle)] bg-white">
-      <Container className="py-16 sm:py-20 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-16">
-          <div className="space-y-5">
-            <div>
-              <p className="font-heading text-3xl leading-tight text-[var(--color-text)]">
-                {siteConfig.brandName}
-              </p>
-              <p className="mt-2 text-sm tracking-wide text-[var(--color-primary-light)]">
-                Psicología clínica · Enfoque profesional
-              </p>
-            </div>
-
-            <p className="whitespace-pre-line max-w-sm text-base leading-relaxed text-[var(--color-text-secondary)]">
+    <footer className="bg-[var(--color-band-about)] pb-24 pt-12 sm:pb-12">
+      <Container>
+        <div className="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <p className="font-heading text-3xl tracking-tight">
+              {siteConfig.brandName}
+            </p>
+            <p className="mt-4 max-w-sm whitespace-pre-line text-sm leading-relaxed text-[var(--color-text-secondary)]">
               {siteConfig.tagline}
             </p>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <BookingButton size="md" />
-              {whatsappUrl ? (
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[var(--color-border-subtle)] bg-white px-4 text-sm font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-soft-cool)] hover:border-[var(--color-accent-warm)]"
-                >
-                  WhatsApp
-                </a>
-              ) : null}
-            </div>
           </div>
-
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-primary)]">
-              {siteConfig.footer.quickLinksTitle}
-            </h3>
-            <ul className="mt-6 space-y-3 text-sm text-[var(--color-text-secondary)]">
-              {siteConfig.nav.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="transition-colors hover:text-[var(--color-primary)]">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-primary)]">
-              {siteConfig.footer.contactTitle}
-            </h3>
-            <ul className="mt-6 space-y-3 text-sm text-[var(--color-text-secondary)]">
-              <li>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                  className="transition-colors hover:text-[var(--color-primary)]"
-                >
-                  {siteConfig.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="transition-colors hover:text-[var(--color-primary)]"
-                >
-                  {siteConfig.email}
-                </a>
-              </li>
-              {whatsappUrl ? (
-                <li>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-[var(--color-primary)]"
+            <h2 className="text-xs font-semibold uppercase tracking-widest">
+              Explora
+            </h2>
+            <nav className="mt-3" aria-label="Navegación del pie">
+              {siteConfig.nav
+                .filter((item) => item.label !== "Inicio")
+                .map((item) => (
+                  <Link
+                    className="flex min-h-11 items-center text-sm text-[var(--color-text-secondary)] hover:underline"
+                    key={item.href}
+                    href={item.href}
                   >
-                    WhatsApp
-                  </a>
-                </li>
-              ) : null}
-            </ul>
+                    {item.label}
+                  </Link>
+                ))}
+            </nav>
           </div>
-
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-primary)]">
-                {siteConfig.footer.hoursTitle}
-              </h3>
-              <ul className="mt-6 space-y-2 text-sm text-[var(--color-text-secondary)]">
-                {siteConfig.schedule.days.slice(0, 5).map((day) => (
-                  <li key={day.day} className="flex justify-between gap-3">
-                    <span>{day.day}</span>
-                    <span className="font-medium text-[var(--color-brand)]">{day.hours}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-primary)]">
-                {siteConfig.footer.legalLinksTitle}
-              </h3>
-              <ul className="mt-6 space-y-2 text-sm text-[var(--color-text-secondary)]">
-                {siteConfig.footer.legalLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="transition-colors hover:text-[var(--color-primary)]">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div>
+            <h2 className="text-xs font-semibold uppercase tracking-widest">
+              Hablemos
+            </h2>
+            <a
+              href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+              className="text-link mt-3"
+            >
+              {siteConfig.phone}
+            </a>
+            <br />
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="text-link break-all"
+            >
+              {siteConfig.email}
+            </a>
           </div>
         </div>
-
-        <div className="mt-12 border-t border-[var(--color-border-subtle)] pt-8 text-sm text-[var(--color-text-muted)] space-y-2">
+        <div className="mt-8 flex flex-col gap-4 border-t border-[var(--color-border-subtle)] pt-6 text-xs text-[var(--color-text-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>{siteConfig.footer.copyright}</p>
-          <p>
-            La información publicada en este sitio es orientativa y no reemplaza una consulta profesional individual.
-          </p>
+          <div className="flex flex-wrap gap-5">
+            {siteConfig.footer.legalLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="inline-flex min-h-11 items-center underline underline-offset-4"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
+        <p className="mt-3 text-xs text-[var(--color-text-muted)]">
+          La información de este sitio no reemplaza una consulta profesional
+          individual.
+        </p>
       </Container>
     </footer>
   );

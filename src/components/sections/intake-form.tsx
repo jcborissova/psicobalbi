@@ -142,10 +142,15 @@ export function IntakeFormSection() {
 
             <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-soft)]/45 px-5 py-4 text-sm leading-7 text-[var(--color-text-muted)] sm:px-6">
               <p>
-                La entrevista inicial permite ordenar la consulta, revisar disponibilidad y proponer la modalidad más adecuada según tu situación actual.
+                La entrevista inicial permite ordenar la consulta, revisar
+                disponibilidad y proponer la modalidad más adecuada según tu
+                situación actual.
               </p>
               <div className="mt-4">
-                <BookingButton size="lg" className="w-full justify-center sm:w-auto" />
+                <BookingButton
+                  size="lg"
+                  className="w-full justify-center sm:w-auto"
+                />
               </div>
             </div>
           </div>
@@ -181,7 +186,8 @@ export function IntakeFormSection() {
                         placeholder="Ej. 34"
                         aria-invalid={Boolean(errors.age)}
                         {...register("age", {
-                          setValueAs: (value) => (value === "" ? undefined : value),
+                          setValueAs: (value) =>
+                            value === "" ? undefined : value,
                         })}
                       />
                       <FieldError message={errors.age?.message} />
@@ -224,23 +230,27 @@ export function IntakeFormSection() {
                       <Select
                         id="consultationType"
                         aria-invalid={Boolean(errors.consultationType)}
-                        defaultValue=""
                         {...register("consultationType")}
                       >
                         <option value="">Seleccionar...</option>
-                        <option value="entrevista_inicial">Entrevista inicial</option>
-                        <option value="sesion_individual">Sesión individual</option>
+                        <option value="entrevista_inicial">
+                          Entrevista inicial
+                        </option>
+                        <option value="sesion_individual">
+                          Sesión individual
+                        </option>
                         <option value="seguimiento">Seguimiento</option>
                       </Select>
                       <FieldError message={errors.consultationType?.message} />
                     </div>
 
                     <div className={fieldWrapperClass}>
-                      <Label htmlFor="preferredModality">Modalidad preferida</Label>
+                      <Label htmlFor="preferredModality">
+                        Modalidad preferida
+                      </Label>
                       <Select
                         id="preferredModality"
                         aria-invalid={Boolean(errors.preferredModality)}
-                        defaultValue=""
                         {...register("preferredModality")}
                       >
                         <option value="">Seleccionar...</option>
@@ -251,23 +261,30 @@ export function IntakeFormSection() {
                     </div>
 
                     <div className={fieldWrapperClass}>
-                      <Label htmlFor="previousTherapyExperience">Experiencia previa en terapia</Label>
+                      <Label htmlFor="previousTherapyExperience">
+                        Experiencia previa en terapia
+                      </Label>
                       <Select
                         id="previousTherapyExperience"
                         aria-invalid={Boolean(errors.previousTherapyExperience)}
-                        defaultValue=""
                         {...register("previousTherapyExperience")}
                       >
                         <option value="">Seleccionar...</option>
                         <option value="si">Sí</option>
                         <option value="no">No</option>
-                        <option value="prefiero_no_indicar">Prefiero no indicar</option>
+                        <option value="prefiero_no_indicar">
+                          Prefiero no indicar
+                        </option>
                       </Select>
-                      <FieldError message={errors.previousTherapyExperience?.message} />
+                      <FieldError
+                        message={errors.previousTherapyExperience?.message}
+                      />
                     </div>
 
                     <div className={fieldWrapperClass}>
-                      <Label htmlFor="preferredSchedule">Horario preferido</Label>
+                      <Label htmlFor="preferredSchedule">
+                        Horario preferido
+                      </Label>
                       <Input
                         id="preferredSchedule"
                         placeholder="Ej. Martes y jueves después de las 18 hs"
@@ -285,20 +302,28 @@ export function IntakeFormSection() {
                   </p>
 
                   <div className={fieldWrapperClass}>
-                    <Label htmlFor="reasonForConsultation">Contanos brevemente</Label>
+                    <Label htmlFor="reasonForConsultation">
+                      Contanos brevemente
+                    </Label>
                     <Textarea
                       id="reasonForConsultation"
                       placeholder="Podés compartir qué situación te gustaría trabajar y cómo te está afectando actualmente."
                       aria-invalid={Boolean(errors.reasonForConsultation)}
                       {...register("reasonForConsultation")}
                     />
-                    <FieldError message={errors.reasonForConsultation?.message} />
+                    <FieldError
+                      message={errors.reasonForConsultation?.message}
+                    />
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-soft)]/55 p-4">
                   <div className="flex items-start gap-3">
-                    <Checkbox id="consent" aria-invalid={Boolean(errors.consent)} {...register("consent")} />
+                    <Checkbox
+                      id="consent"
+                      aria-invalid={Boolean(errors.consent)}
+                      {...register("consent")}
+                    />
                     <div className="space-y-1">
                       <Label htmlFor="consent" className="leading-6">
                         {siteConfig.intakeForm.consentText}
@@ -330,10 +355,13 @@ export function IntakeFormSection() {
 
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs leading-5 text-[var(--color-text-muted)]">
-                    Recibirás respuesta para coordinación según disponibilidad de agenda.
+                    Recibirás respuesta para coordinación según disponibilidad
+                    de agenda.
                   </p>
                   <Button type="submit" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? "Enviando..." : siteConfig.intakeForm.submitLabel}
+                    {isSubmitting
+                      ? "Enviando..."
+                      : siteConfig.intakeForm.submitLabel}
                   </Button>
                 </div>
               </form>

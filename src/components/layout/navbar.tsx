@@ -1,178 +1,105 @@
 "use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import { BookingButton } from "@/components/booking-button";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
+    const close = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        trigger.current?.focus();
       }
     };
-
-    const onResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("resize", onResize);
-    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
   }, []);
-
-  useEffect(() => {
-    const original = document.body.style.overflow;
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, [isOpen]);
-
   return (
-    <>
-      <header className="sticky top-0 z-50 border-b border-[var(--color-border-subtle)] bg-white/98 backdrop-blur-md shadow-[0_1px_3px_rgba(74,78,99,0.05)]">
-        <Container>
-          <div className="flex h-[4.5rem] items-center justify-between gap-8">
-            {/* Logo Section */}
-            <Link
-              href="/#inicio"
-              className="inline-flex min-w-0 flex-col justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm px-1 py-1"
+    <header className="sticky top-0 z-50 border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]/95 backdrop-blur-md">
+      <Container>
+        <div className="flex h-[72px] items-center justify-between gap-4">
+          <Link
+            href="/#inicio"
+            className="inline-flex min-h-11 items-center gap-2 text-[var(--color-text)]"
+            aria-label="Psicobalbi, inicio"
+          >
+            <span
+              aria-hidden="true"
+              className="flex h-7 w-7 items-center justify-center rounded-t-full border border-[var(--color-primary)]"
             >
-              <span className="truncate font-heading text-2xl font-normal text-[var(--color-text)]">
-                {siteConfig.brandName}
-              </span>
-              <span className="hidden text-sm font-normal tracking-tight text-[var(--color-text-muted)] sm:block">
-                Psicología Clínica
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
-              {siteConfig.nav.map((item) => (
+              <span className="h-3 w-3 rounded-full bg-[#c2cdb8]" />
+            </span>
+            <span className="font-heading text-[23px] tracking-[-.06em]">
+              {siteConfig.brandName}
+            </span>
+          </Link>
+          <nav
+            className="hidden items-center gap-7 xl:flex"
+            aria-label="Navegación principal"
+          >
+            {siteConfig.nav
+              .filter((item) => !["Inicio", "Agendar"].includes(item.label))
+              .map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-base font-normal text-[var(--color-text-muted)] transition-colors duration-150 hover:text-[var(--color-text)] px-4 py-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2"
+                  className="text-link text-[var(--color-text-secondary)] hover:underline"
                 >
                   {item.label}
                 </Link>
               ))}
-            </nav>
-
-            {/* Right Section */}
-            <div className="flex items-center gap-3">
-              <div className="hidden lg:block">
-                <BookingButton size="md" />
-              </div>
-
-              {/* Mobile Menu Button */}
-              <button
-                type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[var(--color-border-subtle)] bg-white text-[var(--color-text)] transition-all duration-200 hover:border-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 lg:hidden"
-                aria-expanded={isOpen}
-                aria-controls="mobile-nav-panel"
-                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-                onClick={() => setIsOpen((prev) => !prev)}
-              >
-                <span className="sr-only">{isOpen ? "Cerrar menú" : "Abrir menú"}</span>
-                <span className="relative h-4 w-4">
-                  <span
-                    className={cn(
-                      "absolute left-0 top-0 h-0.5 w-4 rounded-full bg-[var(--color-text)] transition-transform duration-300",
-                      isOpen && "translate-y-[7px] rotate-45",
-                    )}
-                  />
-                  <span
-                    className={cn(
-                      "absolute left-0 top-[7px] h-0.5 w-4 rounded-full bg-[var(--color-text)] transition-opacity duration-300",
-                      isOpen && "opacity-0",
-                    )}
-                  />
-                  <span
-                    className={cn(
-                      "absolute left-0 top-[14px] h-0.5 w-4 rounded-full bg-[var(--color-text)] transition-transform duration-300",
-                      isOpen && "-translate-y-[7px] -rotate-45",
-                    )}
-                  />
-                </span>
-              </button>
-            </div>
-          </div>
-        </Container>
-      </header>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "fixed inset-0 z-[60] lg:hidden transition-opacity duration-300",
-          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
-        )}
-        aria-hidden={!isOpen}
-      >
-        <button
-          type="button"
-          className="absolute inset-0 bg-[rgba(31,41,55,0.1)]"
-          aria-label="Cerrar menú"
-          onClick={() => setIsOpen(false)}
-        />
-
-        <aside
-          id="mobile-nav-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menú de navegación"
-          className={cn(
-            "absolute right-0 top-0 flex h-full w-[76vw] max-w-sm flex-col border-l border-[var(--color-border-subtle)] bg-white transition-transform duration-300",
-            isOpen ? "translate-x-0" : "translate-x-full",
-          )}
-        >
-          {/* Mobile Header */}
-          <div className="border-b border-[var(--color-border-subtle)] px-6 py-6">
-            <p className="font-heading text-xl font-normal text-[var(--color-text)]">
-              {siteConfig.brandName}
-            </p>
-            <p className="text-sm font-normal text-[var(--color-text-muted)]">
-              Psicología Clínica
-            </p>
-          </div>
-
-          {/* Mobile Navigation Links */}
-          <nav className="flex-1 overflow-y-auto py-4" aria-label="Navegación móvil">
-            {siteConfig.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-6 py-4 text-base font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-soft)] transition-colors duration-150"
-              >
-                {item.label}
-              </Link>
-            ))}
           </nav>
-
-          {/* Mobile CTA */}
-          <div className="border-t border-[var(--color-border-subtle)] px-6 py-6">
-            <BookingButton className="w-full justify-center" size="md" variant="primary" />
+          <div className="hidden xl:block">
+            <BookingButton label="Agendar" size="sm" />
           </div>
-        </aside>
-      </div>
-    </>
+          <button
+            ref={trigger}
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-control)] xl:hidden"
+          >
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              {open ? (
+                <path d="m5 5 10 10M15 5 5 15" />
+              ) : (
+                <path d="M3 6h14M3 13h14" />
+              )}
+            </svg>
+          </button>
+        </div>
+        <nav
+          id="mobile-nav"
+          hidden={!open}
+          aria-label="Navegación móvil"
+          className="max-h-[calc(100dvh-72px)] overflow-y-auto pb-5 xl:hidden"
+        >
+          {siteConfig.nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="flex min-h-12 items-center border-t border-[var(--color-border-subtle)] text-sm"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <BookingButton className="mt-3 w-full" />
+        </nav>
+      </Container>
+    </header>
   );
 }

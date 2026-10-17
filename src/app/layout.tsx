@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import type { ReactNode } from "react";
 
 import { Footer } from "@/components/layout/footer";
@@ -8,16 +8,18 @@ import { siteConfig } from "@/config/site";
 
 import "./globals.css";
 
-const headingFont = Cormorant_Garamond({
+const headingFont = localFont({
+  src: "../fonts/lora.ttf",
+  display: "swap",
   variable: "--font-heading-family",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
 });
 
-const bodyFont = Manrope({
+const bodyFont = localFont({
+  src: "../fonts/manrope.ttf",
+  display: "swap",
   variable: "--font-body-family",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
 });
 
 function getMetadataBase() {

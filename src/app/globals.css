@@ -135,3 +135,37 @@ h3 {
     padding-block: 6rem;
   }
 }
+
+/* Guided home: selection, detail, then a deliberate hand-off to booking. */
+.journey-hero {
+  padding-block: 2rem 3rem;
+  background:
+    radial-gradient(ellipse at 0% 0%, #e2e9dc 0%, transparent 65%), #f4f6ef;
+}
+.care-explorer {
+  overflow: hidden;
+  border: 1px solid #cad7cc;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 48px -32px #294b4240;
+  scroll-margin-top: 90px;
+}
+.need-choice {
+  min-height: 112px;
+  border: 1px solid #7c897b;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+  transition:
+    background-color 180ms,
+    border-color 180ms;
+}
+.need-choice:hover {
+  background: #f0f4eb;
+  border-color: #355d4f;
+}
+@media (min-width: 1024px) {
+  .journey-hero {
+    padding-block: 4rem;
+  }
+}

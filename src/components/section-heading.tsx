@@ -25,7 +25,7 @@ export function SectionHeading({
       {eyebrow && <p className="editorial-label">{eyebrow}</p>}
       <h2
         className={cn(
-          "max-w-[24ch] font-heading text-[1.9rem] font-medium leading-[1.22] tracking-[-0.035em] text-[var(--color-text)] sm:text-[2.4rem] lg:text-[2.75rem]",
+          "max-w-[24ch] text-[1.9rem] font-semibold leading-[1.22] tracking-[-0.035em] text-[var(--color-text)] sm:text-[2.4rem] lg:text-[2.75rem]",
           align === "center" && "md:mx-auto",
         )}
       >

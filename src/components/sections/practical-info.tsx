@@ -82,7 +82,7 @@ export function PracticalInfoSection() {
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <SectionHeading
             eyebrow="Información práctica"
-            title="Lo que necesitas saber antes de empezar."
+            title="Antes de tu primera consulta."
             description="Horarios, honorarios y modalidades de atención, en un solo lugar."
           />
           <div>

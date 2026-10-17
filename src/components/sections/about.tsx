@@ -30,6 +30,15 @@ export function AboutSection() {
             </p>
 
             <div className="mt-6 rounded-2xl border border-[var(--color-border-subtle)] bg-white p-5">
+              <div className="relative mb-4 aspect-square w-24 overflow-hidden rounded-2xl lg:hidden">
+                <Image
+                  src={brandImages.readingPhoto}
+                  alt={siteConfig.about.profile.fullName}
+                  fill
+                  sizes="96px"
+                  className="object-cover object-top"
+                />
+              </div>
               <p className="text-base font-semibold text-[var(--color-text)] sm:text-lg">
                 {siteConfig.about.profile.fullName}
               </p>
@@ -72,7 +81,7 @@ export function AboutSection() {
             </ul>
           </div>
 
-          <div className="order-2">
+          <div className="order-2 hidden lg:block">
             <div className="overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-white shadow-[0_4px_12px_rgba(17,24,39,0.06)]">
               <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5]">
                 <Image

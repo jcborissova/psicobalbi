@@ -44,9 +44,9 @@ export const siteConfig: SiteConfig = {
     intro:
       "El trabajo terapéutico se desarrolla en un encuadre claro y confidencial, orientado a comprender cada consulta en profundidad y construir objetivos terapéuticos sostenibles.",
     profile: {
-      fullName: "Ashley Fajardo Barbi",
+      fullName: "Ashley Fajardo Balbi",
       role: "Psicóloga clínica",
-      registration: "Matrícula profesional 00.000",
+      registration: "Matrícula profesional [COMPLETAR DATO OFICIAL]",
       experience: "Más de 8 años de experiencia en consulta clínica",
       audience: "Atención a adolescentes y adultos",
       modalities: "Modalidad presencial y virtual con turno previo",

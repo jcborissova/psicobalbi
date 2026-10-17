@@ -57,7 +57,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div>
+          <div className="hidden lg:block">
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-soft-cool)] shadow-[0_6px_16px_rgba(74,78,99,0.08)] sm:aspect-[16/12] lg:aspect-[4/5]">
               <Image
                 src={brandImages.heroPhoto}

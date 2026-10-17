@@ -4,11 +4,7 @@ import { buttonStyles } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
 
-const featuredServices = siteConfig.services.items.filter((service) => service.featuredOnHome);
-const servicesToDisplay = (featuredServices.length > 0 ? featuredServices : siteConfig.services.items).slice(
-  0,
-  4,
-);
+const servicesToDisplay = siteConfig.services.items;
 
 export function ServicesSection() {
   return (
@@ -49,6 +45,8 @@ export function ServicesSection() {
                 <p className="mt-3 flex-1 text-[15px] leading-7 text-[var(--color-text-secondary)]">
                   {service.description}
                 </p>
+
+                <p className="mt-4 text-lg font-semibold text-[var(--color-text)]">{service.price}</p>
 
                 <a
                   href={siteConfig.bookingUrl}

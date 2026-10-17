@@ -22,7 +22,7 @@ export function Footer() {
               </p>
             </div>
 
-            <p className="max-w-sm text-base leading-relaxed text-[var(--color-text-secondary)]">
+            <p className="whitespace-pre-line max-w-sm text-base leading-relaxed text-[var(--color-text-secondary)]">
               {siteConfig.tagline}
             </p>
 

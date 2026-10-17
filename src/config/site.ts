@@ -8,7 +8,7 @@ const whatsappEnv = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim();
 
 export const siteConfig: SiteConfig = {
   brandName: "Psicobalbi",
-  tagline: "Acompañamiento psicológico con calidez, criterio clínico y presencia humana",
+  tagline: "Psicóloga | Ansiedad y regulación emocional\nAcompañamiento individual y familiar\nUn espacio para entenderte sin culpa",
   description:
     "Espacio de atención psicológica para procesos de ansiedad, estrés y acompañamiento emocional, con modalidad presencial y virtual.",
   bookingUrl: bookingUrlEnv || fallbackBookingUrl,
@@ -26,99 +26,87 @@ export const siteConfig: SiteConfig = {
     { label: "Agendar", href: "/#agendar" },
   ],
   hero: {
-    eyebrow: "Psicología clínica",
-    title: "Un espacio cuidado para hablar, comprender y empezar a sentirse mejor",
-    description:
-      "Atención psicológica con enfoque humano y profesional para adultos y adolescentes. Un proceso terapéutico pensado para acompañarte con claridad, respeto y confidencialidad.",
-    primaryCtaLabel: "Agendar consulta",
-    secondaryCtaLabel: "Conocer el proceso",
-    trustMicrocopy: [
-      "Atención con turno previo",
-      "Confidencialidad y escucha profesional",
-      "Modalidad presencial y virtual",
-    ],
-  },
+  "eyebrow": "Psicología clínica",
+  "title": "Cuando tu mente no se detiene y tus emociones te sobrepasan, necesitas algo más que “calmarte”.",
+  "supportLine": "Te acompaño a entender tu ansiedad, regular tus emociones y sentirte en control de ti mismo, sin culpa.",
+  "description": "Atención psicológica con enfoque humano y profesional para adultos y adolescentes. Un proceso terapéutico pensado para acompañarte con claridad, respeto y confidencialidad.",
+  "primaryCtaLabel": "Agenda tu espacio",
+  "secondaryCtaLabel": "Conocer el proceso",
+  "trustMicrocopy": []
+},
   about: {
-    eyebrow: "Sobre la profesional",
-    title: "Atención psicológica con criterio clínico, ética y trato humano",
-    intro:
-      "El trabajo terapéutico se desarrolla en un encuadre claro y confidencial, orientado a comprender cada consulta en profundidad y construir objetivos terapéuticos sostenibles.",
-    profile: {
-      fullName: "Ashley Fajardo Balbi",
-      role: "Psicóloga clínica",
-      registration: "Matrícula profesional [COMPLETAR DATO OFICIAL]",
-      experience: "Más de 8 años de experiencia en consulta clínica",
-      audience: "Atención a adolescentes y adultos",
-      modalities: "Modalidad presencial y virtual con turno previo",
+  "eyebrow": "Sobre mí",
+  "title": "Un espacio para comprenderte sin juicio",
+  "intro": "Soy Ashley Fajardo Balbi, psicóloga clínica, y mi trabajo es acompañarte a entender lo que estás viviendo desde una mirada más amplia, sin juicios.",
+  "profile": {
+    "fullName": "Ashley Fajardo Balbi",
+    "role": "Psicóloga clínica",
+    "registration": "",
+    "experience": "",
+    "audience": "Niños, adultos y familias",
+    "modalities": "Presencial y virtual"
+  },
+  "philosophyTitle": "Quién soy",
+  "philosophyBody": "Trabajo desde la terapia sistémica y la terapia breve centrada en soluciones. Esto significa que no solo nos enfocamos en el problema, sino en comprender cómo influyen tu historia, tus relaciones y tu entorno, mientras construimos herramientas prácticas que te ayuden a sentirte mejor y avanzar de forma más clara.",
+  "biography": [
+    "Cuento con formación en terapia familiar y de pareja, psicometría, psicología perinatal y manejo de conflictos, y experiencia acompañando procesos relacionados con ansiedad, regulación emocional y dinámicas relacionales.",
+    "Mi enfoque es cercano, respetuoso y flexible, adaptado a cada persona. Este es un espacio seguro donde puedes comprenderte, sin exigirte más de lo que ya has tenido que sostener.",
+    "Este es un espacio para comprenderte sin juicio, no para exigirte más de lo que ya te exiges."
+  ],
+  "highlights": [
+    {
+      "title": "Acompañamiento profesional",
+      "description": "Intervenciones clínicas basadas en un enfoque sistémico, terapia breve centrada en soluciones y terapia breve sistémica."
     },
-    philosophyTitle: "Enfoque de trabajo",
-    philosophyBody:
-      "La atención se basa en una práctica ética, empática y confidencial. Se prioriza construir un vínculo terapéutico claro y de confianza, con objetivos realistas y acompañamiento sostenido durante el proceso.",
-    highlights: [
-      {
-        title: "Atención personalizada",
-        description:
-          "Cada consulta se adapta a tu momento vital, tu historia y tus objetivos de trabajo terapéutico.",
-      },
-      {
-        title: "Acompañamiento profesional",
-        description:
-          "Intervenciones clínicas cuidadas, con escucha activa y criterios de abordaje consistentes.",
-      },
-      {
-        title: "Presencial y virtual",
-        description:
-          "Opciones flexibles para sostener la continuidad del proceso según tu disponibilidad.",
-      },
-    ],
-  },
+    {
+      "title": "Formación",
+      "description": "Maestría en terapia familiar y de pareja, certificación en psicología perinatal, especialidad en sueño, especialización psicométrica, manejo de conflictos e intervenciones en TOC."
+    }
+  ]
+},
   services: {
-    eyebrow: "Áreas de atención",
-    title: "Acompañamiento terapéutico para distintas necesidades emocionales",
-    description:
-      "Las consultas se orientan a procesos frecuentes de malestar emocional, regulación, toma de decisiones y sostén subjetivo en momentos de cambio.",
-    items: [
-      {
-        title: "Terapia individual",
-        description:
-          "Espacio de trabajo clínico para abordar malestar, conflictos personales, vínculos y procesos de cambio.",
-        tag: "Adultos",
-        featuredOnHome: true,
-      },
-      {
-        title: "Ansiedad y estrés",
-        description:
-          "Acompañamiento para síntomas de ansiedad, sobrecarga mental, insomnio y tensión sostenida.",
-        tag: "Regulación emocional",
-        featuredOnHome: true,
-      },
-      {
-        title: "Acompañamiento emocional",
-        description:
-          "Apoyo terapéutico en duelos, crisis vitales, cambios importantes o momentos de incertidumbre.",
-        featuredOnHome: true,
-      },
-      {
-        title: "Orientación para adolescentes y adultos",
-        description:
-          "Espacio de consulta para procesos evolutivos, convivencia, identidad y toma de decisiones.",
-        tag: "Adolescentes / Adultos",
-        featuredOnHome: false,
-      },
-      {
-        title: "Terapia presencial",
-        description:
-          "Atención en consultorio con turnos programados en ubicaciones seleccionadas.",
-        tag: "En consultorio",
-      },
-      {
-        title: "Terapia virtual",
-        description:
-          "Consultas online con la misma calidad de escucha y encuadre terapéutico, desde donde estés.",
-        tag: "Online",
-      },
-    ],
-  },
+  "eyebrow": "Servicios",
+  "title": "Un espacio de atención para ti",
+  "description": "Cada persona merece un espacio seguro donde pueda sentirse escuchada, comprendida y acompañada. Por eso, adapto cada proceso terapéutico a tus necesidades:",
+  "items": [
+    {
+      "title": "Terapia individual",
+      "description": "Te acompaño a trabajar la ansiedad, gestionar tus emociones y tomar decisiones con mayor claridad.",
+      "price": "$2,000",
+      "featuredOnHome": true
+    },
+    {
+      "title": "Terapia familiar",
+      "description": "Trabajo junto a ustedes para mejorar la comunicación, resolver conflictos y fortalecer sus vínculos.",
+      "price": "$3,000",
+      "featuredOnHome": true
+    },
+    {
+      "title": "Terapia de duelo",
+      "description": "Este espacio es para ayudarte a ordenar, entender y sostener lo que estás viviendo.",
+      "price": "$2,000",
+      "featuredOnHome": true
+    },
+    {
+      "title": "Terapia bajo costo",
+      "description": "Cuidar tu salud mental también debe estar al alcance de todos. Este programa está orientado a personas con posibilidades socioeconómicas limitadas, en modalidad virtual, con sesiones de 40 minutos.",
+      "price": "$1,000",
+      "featuredOnHome": true
+    },
+    {
+      "title": "Terapia socioemocional infanto-juvenil",
+      "description": "Acompaño a niños y adolescentes en el desarrollo de habilidades emocionales y sociales.",
+      "price": "$2,500",
+      "featuredOnHome": true
+    },
+    {
+      "title": "Terapia vocacional",
+      "description": "Te ayudo a encontrar claridad en tus decisiones académicas y profesionales.",
+      "price": "$2,500",
+      "featuredOnHome": true
+    }
+  ]
+},
   practicalInfo: {
     eyebrow: "Información para coordinar tu atención",
     title: "Horarios, valores y ubicaciones disponibles",
@@ -142,41 +130,51 @@ export const siteConfig: SiteConfig = {
     ],
   },
   pricing: {
-    eyebrow: "Honorarios profesionales",
-    title: "Valores de consulta según modalidad",
-    description:
-      "Los honorarios reflejan un trabajo terapéutico cuidado, profesional y sostenido. Se comparten con transparencia para que puedas planificar tu atención.",
-    note: "Los valores pueden variar según modalidad, duración de entrevista inicial o necesidades específicas de abordaje. Consultá para opciones de pago.",
-    ctaLabel: "Agendar consulta",
-    items: [
-      {
-        title: "Sesión individual presencial",
-        price: "ARS 28.000",
-        description: "Consulta de seguimiento en consultorio (50 minutos).",
-        badge: "Presencial",
-      },
-      {
-        title: "Sesión individual virtual",
-        price: "ARS 26.000",
-        description: "Consulta online coordinada y confidencial (50 minutos).",
-        badge: "Online",
-      },
-      {
-        title: "Entrevista inicial",
-        price: "ARS 30.000",
-        description: "Primera consulta para conocer tu motivo y establecer el encuadre terapéutico.",
-        badge: "Primera consulta",
-      },
-    ],
-  },
+  "eyebrow": "Honorarios profesionales",
+  "title": "Valores por servicio",
+  "description": "Consulta los honorarios del acompañamiento que necesitas.",
+  "note": "Puedes escribirme si tienes dudas sobre el proceso.",
+  "ctaLabel": "Agenda tu espacio",
+  "items": [
+    {
+      "title": "Terapia individual",
+      "price": "$2,000",
+      "description": "Te acompaño a trabajar la ansiedad, gestionar tus emociones y tomar decisiones con mayor claridad."
+    },
+    {
+      "title": "Terapia familiar",
+      "price": "$3,000",
+      "description": "Trabajo junto a ustedes para mejorar la comunicación, resolver conflictos y fortalecer sus vínculos."
+    },
+    {
+      "title": "Terapia de duelo",
+      "price": "$2,000",
+      "description": "Este espacio es para ayudarte a ordenar, entender y sostener lo que estás viviendo."
+    },
+    {
+      "title": "Terapia bajo costo",
+      "price": "$1,000",
+      "description": "Cuidar tu salud mental también debe estar al alcance de todos. Este programa está orientado a personas con posibilidades socioeconómicas limitadas, en modalidad virtual, con sesiones de 40 minutos."
+    },
+    {
+      "title": "Terapia socioemocional infanto-juvenil",
+      "price": "$2,500",
+      "description": "Acompaño a niños y adolescentes en el desarrollo de habilidades emocionales y sociales."
+    },
+    {
+      "title": "Terapia vocacional",
+      "price": "$2,500",
+      "description": "Te ayudo a encontrar claridad en tus decisiones académicas y profesionales."
+    }
+  ]
+},
   lowCostProgram: {
-    eyebrow: "Atención en programa accesible",
-    title: "Opciones de reducción de honorarios",
-    description:
-      "Existe disponibilidad limitada de cupos para acompañamiento con honorarios reducidos, orientado a personas en dificultades económicas momentáneas.",
-    criteriaNote: "La asignación se realiza previa evaluación de la situación y según disponibilidad vigente de cupos.",
-    ctaLabel: "Solicitar evaluación",
-  },
+  "eyebrow": "Terapia bajo costo",
+  "title": "Cuidar tu salud mental también debe estar al alcance de todos",
+  "description": "Cuidar tu salud mental también debe estar al alcance de todos. Este programa está orientado a personas con posibilidades socioeconómicas limitadas, en modalidad virtual, con sesiones de 40 minutos.",
+  "criteriaNote": "Orientado a personas con posibilidades socioeconómicas limitadas.",
+  "ctaLabel": "Agendar"
+},
   locations: {
     eyebrow: "Espacios de consulta",
     title: "Ubicaciones para atención presencial y coordinación virtual",
@@ -250,12 +248,18 @@ export const siteConfig: SiteConfig = {
     secondaryCtaLabel: "Agendar una consulta",
   },
   ctaBanner: {
-    title: "Si sentís que es un buen momento para empezar, podemos coordinar una primera consulta",
-    description:
-      "Agendá un turno o escribí por WhatsApp para resolver dudas sobre modalidad, horarios o disponibilidad.",
-    primaryCtaLabel: "Agendar consulta",
-    secondaryCtaLabel: "Escribir por WhatsApp",
-  },
+  "title": "Si sientes que este espacio es para ti, puedes dar el primer paso hoy.",
+  "description": "Estoy aquí para acompañarte.",
+  "primaryCtaLabel": "Agenda tu espacio",
+  "secondaryCtaLabel": "Escríbeme por WhatsApp",
+  "connectionTitle": "No necesitas tener todo resuelto para empezar.",
+  "connectionBody": "A veces, lo único que hace falta es un espacio donde puedas entender lo que te pasa sin sentirte juzgado/a.",
+  "contactReasons": [
+    "Tienes dudas sobre el proceso",
+    "No sabes por dónde empezar",
+    "O simplemente necesitas orientación"
+  ]
+},
   footer: {
     quickLinksTitle: "Navegación",
     contactTitle: "Contacto",

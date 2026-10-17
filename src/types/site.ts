@@ -13,6 +13,7 @@ export interface ServiceItem {
   description: string;
   tag?: string;
   featuredOnHome?: boolean;
+  price?: string;
 }
 
 export interface ScheduleDay {
@@ -61,6 +62,7 @@ export interface SiteConfig {
   email: string;
   nav: NavItem[];
   hero: {
+    supportLine?: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -80,6 +82,7 @@ export interface SiteConfig {
       audience: string;
       modalities: string;
     };
+    biography?: string[];
     philosophyTitle: string;
     philosophyBody: string;
     highlights: HighlightCard[];
@@ -144,6 +147,9 @@ export interface SiteConfig {
     secondaryCtaLabel: string;
   };
   ctaBanner: {
+    connectionTitle?: string;
+    connectionBody?: string;
+    contactReasons?: string[];
     title: string;
     description: string;
     primaryCtaLabel: string;

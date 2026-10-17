@@ -6,93 +6,43 @@ import { siteConfig } from "@/config/site";
 import { brandImages } from "@/img";
 
 const keyFacts = [
-  { label: "Experiencia", value: siteConfig.about.profile.experience },
   { label: "Población", value: siteConfig.about.profile.audience },
   { label: "Modalidad", value: siteConfig.about.profile.modalities },
-] as const;
+];
 
 export function AboutSection() {
   return (
-    <section id="sobre-mi" className="bg-[var(--color-band-about)] py-14 sm:py-16 lg:py-24">
+    <section id="sobre-mi" className="bg-[var(--color-band-about)] py-12 sm:py-16 lg:py-20">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-12">
-          <div className="order-1">
-            <SectionHeading
-              eyebrow={siteConfig.about.eyebrow}
-              title={siteConfig.about.title}
-              description={siteConfig.about.intro}
-              align="left"
-              eyebrowTone="warm"
-            />
-
-            <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-[var(--color-text-secondary)] sm:mt-6 sm:text-lg">
-              {siteConfig.about.philosophyBody}
-            </p>
-
-            <div className="mt-6 rounded-2xl border border-[var(--color-border-subtle)] bg-white p-5">
-              <div className="relative mb-4 aspect-square w-24 overflow-hidden rounded-2xl lg:hidden">
-                <Image
-                  src={brandImages.readingPhoto}
-                  alt={siteConfig.about.profile.fullName}
-                  fill
-                  sizes="96px"
-                  className="object-cover object-top"
-                />
-              </div>
-              <p className="text-base font-semibold text-[var(--color-text)] sm:text-lg">
-                {siteConfig.about.profile.fullName}
-              </p>
-
-              <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <p className="text-sm text-[var(--color-text-secondary)]">{siteConfig.about.profile.role}</p>
-                <span className="hidden h-1 w-1 rounded-full bg-[var(--color-border-subtle)] sm:inline-block" />
-                <p className="text-xs text-[var(--color-text-muted)]">{siteConfig.about.profile.registration}</p>
-              </div>
+        <div className="mx-auto max-w-4xl">
+          <SectionHeading eyebrow={siteConfig.about.eyebrow} title={siteConfig.about.title} align="left" eyebrowTone="warm" />
+          <div className="mt-6 flex items-start gap-4 sm:gap-6">
+            <div className="relative aspect-square w-20 shrink-0 overflow-hidden rounded-2xl sm:w-24">
+              <Image src={brandImages.readingPhoto} alt={siteConfig.about.profile.fullName} fill sizes="(max-width: 640px) 80px, 96px" className="object-cover object-top" />
             </div>
-
-            <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {keyFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="rounded-2xl border border-[var(--color-border-subtle)] bg-white p-4"
-                >
-                  <dt className="text-[10px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-1.5 text-sm leading-snug text-[var(--color-text)]">{fact.value}</dd>
+            <p className="max-w-[65ch] text-[15px] leading-relaxed text-[var(--color-text-secondary)] sm:text-base">{siteConfig.about.intro}</p>
+          </div>
+          <dl className="mt-6 grid grid-cols-2 gap-3">
+            {keyFacts.map((fact) => (
+              <div key={fact.label} className="rounded-2xl bg-white p-4">
+                <dt className="text-xs font-medium text-[var(--color-text-secondary)]">{fact.label}</dt>
+                <dd className="mt-1 text-sm font-semibold text-[var(--color-text)]">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+            <div className="space-y-4 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+              <h3 className="text-lg font-semibold text-[var(--color-text)]">{siteConfig.about.philosophyTitle}</h3>
+              <p>{siteConfig.about.philosophyBody}</p>
+              {siteConfig.about.biography?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <div className="space-y-5">
+              {siteConfig.about.highlights.map((highlight) => (
+                <div key={highlight.title} className="border-l-2 border-[var(--color-accent-warm)] pl-4">
+                  <h3 className="text-base font-semibold text-[var(--color-text)]">{highlight.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">{highlight.description}</p>
                 </div>
               ))}
-            </dl>
-
-            <ul className="mt-6 space-y-3 sm:mt-7">
-              {siteConfig.about.highlights.map((highlight) => (
-                <li
-                  key={highlight.title}
-                  className="rounded-2xl border border-[var(--color-border-subtle)] bg-white p-4"
-                >
-                  <p className="text-sm font-semibold text-[var(--color-text)] sm:text-base">
-                    {highlight.title}
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                    {highlight.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="order-2 hidden lg:block">
-            <div className="overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-white shadow-[0_4px_12px_rgba(17,24,39,0.06)]">
-              <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5]">
-                <Image
-                  src={brandImages.readingPhoto}
-                  alt="Psicóloga en consulta con una presencia profesional y cercana"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 44vw"
-                  className="object-cover object-center"
-                  priority={false}
-                />
-              </div>
             </div>
           </div>
         </div>

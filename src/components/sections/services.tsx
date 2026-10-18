@@ -1,55 +1,53 @@
 import { Container } from "@/components/layout/container";
-import { SectionHeading } from "@/components/section-heading";
-import { siteConfig } from "@/config/site";
+
+const spaces = [
+  {
+    title: "Lo que estás sintiendo",
+    description:
+      "Ansiedad, emociones difíciles o una pérdida. Un espacio para comprender lo que te pasa y encontrar formas de cuidarte.",
+    detail: "Acompañamiento individual y duelo",
+  },
+  {
+    title: "Tus vínculos y tu familia",
+    description:
+      "Escucharnos, entender nuestras diferencias y mejorar la comunicación. Acompañamiento para familias, niños y adolescentes.",
+    detail: "Terapia familiar e infanto-juvenil",
+  },
+  {
+    title: "Las decisiones que vienen",
+    description:
+      "Cuando hay cambios, dudas o nuevos caminos. Podemos explorar tus decisiones académicas y profesionales con más claridad.",
+    detail: "Orientación vocacional",
+  },
+];
 
 export function ServicesSection() {
   return (
-    <section
-      id="servicios"
-      className="section-space bg-[var(--color-band-services)]"
-    >
+    <section id="servicios" className="home-section accompaniment-section">
       <Container>
-        <div className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-16">
-          <SectionHeading
-            eyebrow="Cómo puedo acompañarte"
-            title="Cada momento necesita su propio espacio."
-          />
-          <p className="max-w-[55ch] text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
-            {siteConfig.services.description}
+        <div className="home-section-intro">
+          <p className="home-eyebrow">Cómo puedo acompañarte</p>
+          <h2 className="home-title">Hay lugar para lo que estás viviendo.</h2>
+          <p className="home-description">
+            No necesitas elegir una terapia ni tener todas las respuestas antes
+            de conversar. Podemos empezar por lo que hoy te preocupa.
           </p>
         </div>
-        <div className="mt-8 grid gap-x-10 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
-          {siteConfig.services.items.map((service, index) => (
-            <article
-              key={service.title}
-              className="flex flex-col border-t border-[var(--color-border-subtle)] py-6 sm:py-8"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-xs text-[var(--color-accent-warm)]">
-                  0{index + 1}
-                </span>
-                <span className="rounded-full bg-[var(--color-soft)] px-3 py-1 text-sm font-semibold">
-                  {service.price}
-                </span>
-              </div>
-              <h3 className="mt-4 font-heading text-[1.45rem] leading-snug tracking-tight">
-                {service.title}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                {service.description}
-              </p>
-              <a
-                href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Agendar: ${service.title}`}
-                className="text-link mt-3 self-start underline"
-              >
-                Agendar <span aria-hidden="true">↗</span>
-              </a>
+        <div className="accompaniment-grid">
+          {spaces.map((space) => (
+            <article key={space.title}>
+              <h3>{space.title}</h3>
+              <p>{space.description}</p>
+              <span>{space.detail}</span>
             </article>
           ))}
         </div>
+        <p className="accessibility-note">
+          <span>También hay un programa de atención accesible.</span>{" "}
+          <a href="#informacion-practica" className="text-link underline">
+            Conocer las opciones <span aria-hidden="true">↓</span>
+          </a>
+        </p>
       </Container>
     </section>
   );

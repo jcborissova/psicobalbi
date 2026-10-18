@@ -1,5 +1,4 @@
 import { Container } from "@/components/layout/container";
-import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/config/site";
 import { Disclosure } from "@/components/ui/disclosure";
 
@@ -77,15 +76,22 @@ export function PracticalInfoSection() {
   return (
     <section
       id="informacion-practica"
-      className="section-space bg-[var(--color-band-practical)]"
+      className="home-section practical-welcome"
     >
       <Container>
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-          <SectionHeading
-            eyebrow="Información práctica"
-            title="Antes de tu primera consulta."
-            description="Horarios, honorarios y modalidades de atención, en un solo lugar."
-          />
+          <div>
+            <p className="home-eyebrow">Información práctica</p>
+            <h2 className="home-title">
+              Lo que quieras saber,
+              <br />
+              <em>con claridad.</em>
+            </h2>
+            <p className="home-description">
+              Horarios, modalidades y honorarios. Puedes consultar los detalles
+              aquí, sin compromiso.
+            </p>
+          </div>
           <div className="space-y-3">
             {panels.map((panel, index) => (
               <Disclosure

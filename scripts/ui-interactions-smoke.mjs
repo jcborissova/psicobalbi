@@ -5,6 +5,32 @@ export default async function checkInteractions(page) {
   };
   await page.goto("http://localhost:3002");
   await page.setViewportSize({ width: 390, height: 844 });
+  check(
+    await page
+      .locator("#inicio h1")
+      .innerText()
+      .then((text) => text.includes("comprenderte")),
+    "Hero must welcome instead of selling a service",
+  );
+  check(
+    (await page.locator(".need-choice").count()) === 0,
+    "Home must not require selecting a therapy",
+  );
+  const welcome = page
+    .locator("#inicio")
+    .getByRole("link", { name: "Podemos conversar" });
+  check(
+    (await welcome.getAttribute("href")).includes("wa.me/"),
+    "Welcome action must open a conversation",
+  );
+  check(
+    !/\$[0-9]/.test(await page.locator("main").innerText()),
+    "Prices must not be visible before expanding practical information",
+  );
+  check(
+    (await page.locator("#servicios article").count()) === 3,
+    "Accompaniment should be explained in three readable groups",
+  );
   const banner = page.getByRole("banner");
   const height = (await banner.boundingBox()).height;
   const widthBeforeMenu = (await banner.boundingBox()).width;
@@ -43,13 +69,10 @@ export default async function checkInteractions(page) {
       .evaluate((el) => el === document.activeElement),
     "Menu must restore trigger focus",
   );
-  await page.locator(".need-choice").first().focus();
+  await welcome.focus();
   await page.keyboard.press("Escape");
   check(
-    await page
-      .locator(".need-choice")
-      .first()
-      .evaluate((el) => el === document.activeElement),
+    await welcome.evaluate((el) => el === document.activeElement),
     "Escape while menu is closed must not steal focus",
   );
   await page.getByRole("button", { name: "Abrir menú", exact: true }).click();
@@ -88,6 +111,12 @@ export default async function checkInteractions(page) {
     (await panels.nth(1).getAttribute("aria-expanded")) === "true",
     "Disclosure must open by keyboard",
   );
+  check(
+    (await page.locator("#informacion-practica").innerText()).includes(
+      "$1,000",
+    ),
+    "Honorarios must remain available when requested",
+  );
   await page.keyboard.press("Space");
   check(
     (await panels.nth(1).getAttribute("aria-expanded")) === "false",
@@ -106,22 +135,6 @@ export default async function checkInteractions(page) {
     (await page.locator("#proceso li p").count()) === 3,
     "All three process descriptions must be visible",
   );
-  await page.locator(".need-choice").nth(3).click();
-  check(
-    await page
-      .locator("#servicios")
-      .innerText()
-      .then((text) => text.includes("$1,000")),
-    "Service selection must retain the correct price",
-  );
-  await page.getByRole("button", { name: "Cambiar de opción" }).click();
-  check(
-    await page
-      .locator(".need-choice")
-      .nth(3)
-      .evaluate((el) => el === document.activeElement),
-    "Back must restore the selected choice focus",
-  );
   const widths = [];
   for (const width of [320, 360, 390, 430, 768, 1024, 1280]) {
     await page.setViewportSize({ width, height: 900 });
@@ -133,11 +146,12 @@ export default async function checkInteractions(page) {
     );
     widths.push(width);
   }
+  await page.setViewportSize({ width: 320, height: 568 });
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
-  await page.locator(".need-choice").first().click();
+  const welcomeBounds = await welcome.boundingBox();
   check(
-    await page.evaluate(() => window.scrollY < 2),
-    "A visible result must not force desktop scrolling",
+    welcomeBounds.y + welcomeBounds.height <= 568,
+    "Primary welcome action must fit the first short mobile viewport",
   );
   await page.emulateMedia({ reducedMotion: "reduce" });
   check(

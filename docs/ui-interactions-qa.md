@@ -1,4 +1,4 @@
-# Navigation and disclosure refinement
+# Welcoming home and interaction QA
 
 ## Changes
 
@@ -6,7 +6,9 @@
 - Escape, the close button and backdrop dismiss the menu. Closing restores focus; section links focus their destination. Resizing to desktop dismisses the mobile menu and releases scrolling.
 - About and practical information share the same disclosure component: a full-width button, chevron, explicit expanded state, animated intrinsic height and inert collapsed content. The first practical panel starts open.
 - The three process steps are visible without additional interactions.
-- Service selection only scrolls when the result would be off screen. Returning restores the selected option, not the top of the page.
+- The home welcomes visitors with a conversation CTA instead of a therapy selector. Three static accompaniment groups replace the commercial cards.
+- Prices appear only after expanding the practical-information fees panel; WhatsApp links do not include prices.
+- A small practitioner portrait and a plain-language introduction replace the boxed profile. The original biography and credentials remain available in a disclosure.
 - Motion is limited to short fades and state changes. Reduced motion disables animations and smooth scrolling. Native form select behavior is preserved.
 
 ## Repeatable browser smoke
@@ -19,7 +21,7 @@ playwright-cli -s=ui open http://localhost:3002
 playwright-cli -s=ui run-code "$(sed 's/^export default //' scripts/ui-interactions-smoke.mjs)"
 ```
 
-The script throws on failure and returns `status: passed` on success. It covers menu layout stability, keyboard focus, dismissal, breakpoint changes, section navigation, accordion semantics, service selection, reduced motion, native selects and horizontal overflow at 320, 360, 390, 430, 768, 1024 and 1280 px.
+The script throws on failure and returns `status: passed` on success. It covers menu layout stability, keyboard focus, dismissal, breakpoint changes, section navigation, accordion semantics, welcoming hero, no visible prices on initial load, reduced motion, native selects and horizontal overflow at 320, 360, 390, 430, 768, 1024 and 1280 px.
 
 ## Visual/device checklist
 

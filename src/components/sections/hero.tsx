@@ -1,45 +1,90 @@
-import { BookingButton } from "@/components/booking-button";
 import { Container } from "@/components/layout/container";
-import { CareExplorer } from "@/components/sections/care-explorer";
+import { buttonStyles } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function HeroSection() {
+  const conversation = buildWhatsAppUrl(
+    siteConfig.whatsappNumber,
+    "Hola Ashley, me gustaría conocer cómo puedes acompañarme. ¿Podemos conversar?",
+  );
+
   return (
-    <section id="inicio" className="journey-hero">
+    <section id="inicio" className="welcome-hero">
       <Container>
-        <div className="grid items-start gap-7 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-          <div className="lg:sticky lg:top-32 lg:py-9">
-            <p className="flex items-center gap-2 text-xs font-semibold text-[#446356]">
-              <span className="h-2 w-2 rounded-full bg-[#68836b]" /> Atención
-              psicológica · Presencial y virtual
-            </p>
-            <h1 className="mt-4 max-w-[15ch] text-[2.1rem] font-semibold leading-[1.12] tracking-[-.055em] sm:text-5xl lg:mt-6 lg:text-[3.8rem]">
-              Tu próximo paso empieza{" "}
-              <span className="font-heading italic font-medium text-[#658067]">
-                contigo.
-              </span>
+        <div className="welcome-layout">
+          <div className="welcome-copy">
+            <svg
+              className="welcome-flourish"
+              aria-hidden="true"
+              viewBox="0 0 64 28"
+              fill="none"
+            >
+              <path
+                d="M2 23C15 23 12 4 25 5C39 6 32 25 25 20C16 12 42 3 61 11"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+            <p className="home-eyebrow">Psicobalbi · Psicología cercana</p>
+            <h1 className="welcome-title">
+              Un espacio para comprenderte <em>sin juicio.</em>
             </h1>
-            <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-[#526158] sm:text-base">
-              No necesitas tener todo resuelto. Encuentra un espacio para lo que
-              estás viviendo y decide cómo empezar.
+            <p className="welcome-description">
+              No tienes que saber por dónde empezar. Aquí podemos hablar de lo
+              que estás viviendo y encontrar un primer paso, a tu ritmo.
             </p>
-            <BookingButton
-              label="Prefiero ir directo a la agenda ↗"
-              variant="ghost"
-              size="sm"
-              className="mt-3 w-full sm:w-auto lg:mt-6"
-            />
-            <div className="mt-8 hidden max-w-sm border-t border-[#cdd9ce] pt-5 lg:block">
-              <p className="text-xs uppercase tracking-widest text-[#587060]">
-                A tu ritmo
-              </p>
-              <p className="mt-3 text-xl font-medium leading-relaxed tracking-tight">
-                Entenderte. Encontrar apoyo.
-                <br />
-                Dar un primer paso.
-              </p>
+            <div className="welcome-actions">
+              <a
+                href={conversation || "/entrevista-inicial"}
+                target={conversation ? "_blank" : undefined}
+                rel={conversation ? "noopener noreferrer" : undefined}
+                className={buttonStyles({
+                  size: "lg",
+                  className: "w-full sm:w-auto",
+                })}
+              >
+                Podemos conversar <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#servicios" className="text-link welcome-secondary">
+                Conoce cómo puedo acompañarte <span aria-hidden="true">↓</span>
+              </a>
             </div>
+            <p className="welcome-note">
+              Atención presencial y virtual · Con cita previa
+            </p>
           </div>
-          <CareExplorer />
+          <div className="welcome-art" aria-hidden="true">
+            <svg viewBox="0 0 420 380" fill="none">
+              <path
+                d="M77 285C28 217 64 74 157 60C221 50 234 124 249 183C267 255 217 343 148 335C118 332 93 311 77 285Z"
+                fill="#dce3d1"
+              />
+              <path
+                d="M213 294C170 258 188 177 247 140C300 106 366 124 378 183C393 253 324 330 269 321C246 317 229 309 213 294Z"
+                fill="#ead4c2"
+              />
+              <path
+                d="M54 313C104 308 88 157 149 141C193 129 218 191 188 217C157 244 122 197 151 173C190 141 233 242 281 228C322 216 328 174 299 162C277 153 258 175 270 193C284 214 324 205 368 183"
+                stroke="#52684e"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M321 76C323 63 329 55 340 49M319 76C305 67 304 57 306 48M323 78C335 78 344 72 348 65"
+                stroke="#a46349"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <circle cx="108" cy="79" r="5" fill="#a46349" />
+            </svg>
+            <p>
+              Escucha. Cercanía.
+              <br />
+              <em>Tu propio ritmo.</em>
+            </p>
+          </div>
         </div>
       </Container>
     </section>

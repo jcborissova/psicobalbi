@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   nav: [
     { label: "Inicio", href: "/#inicio" },
     { label: "Sobre mí", href: "/#sobre-mi" },
-    { label: "Servicios", href: "/#servicios" },
+    { label: "Acompañamiento", href: "/#servicios" },
     { label: "Información práctica", href: "/#informacion-practica" },
     { label: "Entrevista inicial", href: "/entrevista-inicial" },
     { label: "Agendar", href: "/#agendar" },

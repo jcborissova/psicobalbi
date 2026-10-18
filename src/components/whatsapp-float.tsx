@@ -17,7 +17,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp a Psicobalbi"
-      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-emerald-700/10 bg-[#18784c] px-3.5 text-sm font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-[1.02] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] motion-reduce:transition-none sm:bottom-6 sm:right-6 sm:h-12 sm:px-4"
+      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-emerald-700/10 bg-[#18784c] px-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] motion-reduce:transition-none sm:bottom-6 sm:right-6 sm:h-12 sm:px-4"
     >
       <svg
         aria-hidden="true"

@@ -10,9 +10,9 @@ const variantClasses: Record<ButtonVariant, string> = {
   inverse:
     "bg-[#ecdfcc] text-[#233d35] hover:bg-white focus-visible:ring-white",
   primary:
-    "bg-[var(--color-primary)] text-white shadow-none hover:bg-[var(--color-primary-dark)] hover:shadow-none active:translate-y-px transition-all duration-200",
+    "bg-[var(--color-primary)] text-white shadow-none hover:bg-[var(--color-primary-dark)] hover:shadow-none transition-colors duration-200",
   secondary:
-    "bg-[var(--color-accent-warm)] text-white shadow-[0_2px_8px_rgba(142,107,95,0.12)] hover:bg-[color-mix(in_oklab,var(--color-accent-warm),black_7%)] hover:shadow-[0_4px_12px_rgba(142,107,95,0.16)] active:translate-y-px",
+    "bg-[var(--color-accent-warm)] text-white shadow-[0_2px_8px_rgba(142,107,95,0.12)] hover:bg-[color-mix(in_oklab,var(--color-accent-warm),black_7%)] hover:shadow-[0_4px_12px_rgba(142,107,95,0.16)]",
   outline:
     "border border-[var(--color-border-subtle)] bg-transparent text-[var(--color-primary)] hover:bg-[color-mix(in_oklab,var(--color-primary),white_97%)] hover:border-[var(--color-primary-light)] active:bg-[color-mix(in_oklab,var(--color-primary),white_94%)]",
   ghost:
@@ -36,7 +36,7 @@ export function buttonStyles({
   className?: string;
 } = {}) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50",
     variantClasses[variant],
     sizeClasses[size],
     className,

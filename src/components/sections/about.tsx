@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/config/site";
 import { brandImages } from "@/img";
+import { Disclosure } from "@/components/ui/disclosure";
 
 export function AboutSection() {
   const about = siteConfig.about;
@@ -46,29 +47,22 @@ export function AboutSection() {
                 </div>
               ))}
             </dl>
-            <details className="group mt-5 border-y border-[#dce4df]">
-              <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
-                Enfoque, experiencia y formación{" "}
-                <span
-                  aria-hidden="true"
-                  className="text-xl group-open:rotate-45"
-                >
-                  +
-                </span>
-              </summary>
-              <div className="space-y-4 pb-5 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                <p>{about.philosophyBody}</p>
-                {about.biography?.map((text) => (
-                  <p key={text}>{text}</p>
-                ))}
-                {about.highlights.map((item) => (
-                  <div key={item.title}>
-                    <h3 className="font-semibold">{item.title}</h3>
-                    <p className="mt-1">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </details>
+            <div className="mt-5">
+              <Disclosure title="Enfoque, experiencia y formación">
+                <div className="space-y-4">
+                  <p>{about.philosophyBody}</p>
+                  {about.biography?.map((text) => (
+                    <p key={text}>{text}</p>
+                  ))}
+                  {about.highlights.map((item) => (
+                    <div key={item.title}>
+                      <h4 className="font-semibold">{item.title}</h4>
+                      <p className="mt-1">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </Disclosure>
+            </div>
           </div>
         </div>
       </Container>

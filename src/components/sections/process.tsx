@@ -23,23 +23,15 @@ export function ProcessSection() {
         <ol className="mt-6 grid gap-3 md:grid-cols-3">
           {siteConfig.process.steps.map((step, i) => (
             <li key={step.title} className="rounded-3xl bg-white/80 p-5">
-              <details className="group">
-                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#edf2e8] text-sm font-semibold">
-                    {i + 1}
-                  </span>
-                  <h3 className="flex-1 text-sm font-semibold">{titles[i]}</h3>
-                  <span
-                    aria-hidden="true"
-                    className="text-lg group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="mt-4 text-sm leading-relaxed text-[#526158]">
-                  {step.description}
-                </p>
-              </details>
+              <div className="flex min-h-11 items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#edf2e8] text-sm font-semibold">
+                  {i + 1}
+                </span>
+                <h3 className="flex-1 text-sm font-semibold">{titles[i]}</h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-[#526158]">
+                {step.description}
+              </p>
             </li>
           ))}
         </ol>

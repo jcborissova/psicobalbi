@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/config/site";
+import { Disclosure } from "@/components/ui/disclosure";
 
 export function PracticalInfoSection() {
   const panels = [
@@ -51,9 +52,9 @@ export function PracticalInfoSection() {
         <div className="space-y-6">
           {siteConfig.locations.items.map((location) => (
             <div key={location.name}>
-              <h3 className="font-semibold text-[var(--color-text)]">
+              <h4 className="font-semibold text-[var(--color-text)]">
                 {location.name}
-              </h3>
+              </h4>
               <p className="mt-1">{location.address}</p>
               <p>{location.consultationMode}</p>
               <a
@@ -85,31 +86,16 @@ export function PracticalInfoSection() {
             title="Antes de tu primera consulta."
             description="Horarios, honorarios y modalidades de atención, en un solo lugar."
           />
-          <div>
+          <div className="space-y-3">
             {panels.map((panel, index) => (
-              <details
+              <Disclosure
                 key={panel.title}
-                open={index === 0}
-                className="group border-b border-[var(--color-border-subtle)] first:border-t"
+                title={panel.title}
+                description={panel.summary}
+                defaultOpen={index === 0}
               >
-                <summary className="flex min-h-20 cursor-pointer list-none items-center justify-between gap-5 py-5 [&::-webkit-details-marker]:hidden">
-                  <div>
-                    <h3 className="text-base font-semibold">{panel.title}</h3>
-                    <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                      {panel.summary}
-                    </p>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className="text-2xl font-light transition-transform group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </summary>
-                <div className="pb-6 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                  {panel.content}
-                </div>
-              </details>
+                {panel.content}
+              </Disclosure>
             ))}
           </div>
         </div>

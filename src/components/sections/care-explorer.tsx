@@ -42,7 +42,7 @@ const needs = [
 export function CareExplorer() {
   const [selected, setSelected] = useState<number | null>(null);
   const result = useRef<HTMLHeadingElement>(null);
-  const choices = useRef<HTMLHeadingElement>(null);
+  const choiceButtons = useRef<(HTMLButtonElement | null)[]>([]);
   const service =
     selected === null ? null : siteConfig.services.items[selected];
   const whatsapp = buildWhatsAppUrl(
@@ -52,22 +52,32 @@ export function CareExplorer() {
       : "Hola, me gustaría empezar terapia, pero no sé qué tipo de atención elegir. ¿Podrías orientarme?",
   );
 
+  function focusInView(element: HTMLElement | null) {
+    if (!element) return;
+    element.focus({ preventScroll: true });
+    const bounds = element.getBoundingClientRect();
+    // Only reposition when the new focus would be obscured or off screen.
+    if (bounds.top < 96 || bounds.bottom > window.innerHeight - 24) {
+      element.scrollIntoView({
+        block: "nearest",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    }
+  }
+
   function choose(index: number) {
     setSelected(index);
     requestAnimationFrame(() => {
-      result.current?.focus({ preventScroll: true });
-      result.current
-        ?.closest("section")
-        ?.scrollIntoView({ block: "start", behavior: "instant" });
+      focusInView(result.current);
     });
   }
   function back() {
+    const previous = selected;
     setSelected(null);
     requestAnimationFrame(() => {
-      choices.current?.focus({ preventScroll: true });
-      choices.current
-        ?.closest("section")
-        ?.scrollIntoView({ block: "start", behavior: "instant" });
+      focusInView(previous === null ? null : choiceButtons.current[previous]);
     });
   }
 
@@ -87,7 +97,7 @@ export function CareExplorer() {
       </div>
       <div className="p-5 pt-4 sm:p-7 sm:pt-5">
         {service ? (
-          <div key={service.title}>
+          <div key={service.title} className="care-view">
             <button
               type="button"
               onClick={back}
@@ -101,7 +111,7 @@ export function CareExplorer() {
             <h2
               ref={result}
               tabIndex={-1}
-              className="focus:outline-none mt-3 text-2xl font-semibold leading-tight tracking-tight sm:text-3xl"
+              className="care-result-title focus:outline-none mt-3 text-2xl font-semibold leading-tight tracking-tight sm:text-3xl"
             >
               {service.title}
             </h2>
@@ -142,12 +152,8 @@ export function CareExplorer() {
             </p>
           </div>
         ) : (
-          <>
-            <h2
-              ref={choices}
-              tabIndex={-1}
-              className="focus:outline-none text-xl font-semibold tracking-tight sm:text-2xl"
-            >
+          <div className="care-view">
+            <h2 className="focus:outline-none text-xl font-semibold tracking-tight sm:text-2xl">
               ¿Qué necesitas hoy?
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[#526158]">
@@ -157,6 +163,9 @@ export function CareExplorer() {
               {needs.map((need) => (
                 <button
                   key={need.index}
+                  ref={(element) => {
+                    choiceButtons.current[need.index] = element;
+                  }}
                   type="button"
                   onClick={() => choose(need.index)}
                   className="need-choice group text-left"
@@ -166,10 +175,7 @@ export function CareExplorer() {
                     <span className="need-icon">
                       <CareIcon kind={need.index} className="h-6 w-6" />
                     </span>
-                    <span
-                      aria-hidden="true"
-                      className="text-lg text-[#526158] transition-transform group-hover:translate-x-1"
-                    >
+                    <span aria-hidden="true" className="text-lg text-[#526158]">
                       ↗
                     </span>
                   </span>
@@ -198,7 +204,7 @@ export function CareExplorer() {
                 <span aria-hidden="true">↗</span>
               </a>
             )}
-          </>
+          </div>
         )}
       </div>
       <div className="px-5 pb-5 text-xs text-[#66746b] sm:px-7">

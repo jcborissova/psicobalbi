@@ -62,7 +62,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-control)] xl:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-soft)] xl:hidden"
           >
             <svg
               aria-hidden="true"

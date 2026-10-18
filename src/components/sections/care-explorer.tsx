@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { CareIcon } from "@/components/ui/care-icon";
 import { BookingButton } from "@/components/booking-button";
 import { siteConfig } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -9,37 +10,31 @@ const needs = [
   {
     label: "Ansiedad y emociones",
     hint: "Un espacio para mí",
-    symbol: "01",
     index: 0,
   },
   {
     label: "Familia y vínculos",
     hint: "Entendernos mejor",
-    symbol: "02",
     index: 1,
   },
   {
     label: "Duelo y pérdidas",
     hint: "Acompañar lo que vivo",
-    symbol: "03",
     index: 2,
   },
   {
     label: "Atención accesible",
     hint: "Una opción de bajo costo",
-    symbol: "04",
     index: 3,
   },
   {
     label: "Niños y adolescentes",
     hint: "Emociones y habilidades",
-    symbol: "05",
     index: 4,
   },
   {
     label: "Decisiones vocacionales",
     hint: "Encontrar dirección",
-    symbol: "06",
     index: 5,
   },
 ];
@@ -82,15 +77,15 @@ export function CareExplorer() {
       aria-label="Explorar atención"
       className="care-explorer"
     >
-      <div className="flex items-center justify-between gap-3 border-b border-[#dce4df] px-5 py-4 sm:px-7">
-        <span className="text-xs font-semibold uppercase tracking-[.1em] text-[#3f6557]">
+      <div className="flex items-center justify-between gap-3 px-5 pt-6 sm:px-7">
+        <span className="text-xs font-medium tracking-wide text-[#526158]">
           Encuentra tu espacio
         </span>
         <span className="text-xs text-[#586960]">
-          {service ? "02 / Tu siguiente paso" : "01 / Qué necesitas"}
+          {service ? "A tu ritmo" : "Sin prisa"}
         </span>
       </div>
-      <div className="p-5 sm:p-7">
+      <div className="p-5 pt-4 sm:p-7 sm:pt-5">
         {service ? (
           <div key={service.title}>
             <button
@@ -101,7 +96,7 @@ export function CareExplorer() {
               ← Cambiar de opción
             </button>
             <p className="text-xs uppercase tracking-widest text-[#66746b]">
-              El espacio que elegiste
+              Un espacio para acompañarte
             </p>
             <h2
               ref={result}
@@ -153,10 +148,10 @@ export function CareExplorer() {
               tabIndex={-1}
               className="focus:outline-none text-xl font-semibold tracking-tight sm:text-2xl"
             >
-              ¿Qué te gustaría acompañar?
+              ¿Qué necesitas hoy?
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[#526158]">
-              Elige una opción para ver su atención y precio.
+              Un lugar para escucharte, comprenderte y acompañarte.
             </p>
             <div className="mt-5 grid grid-cols-2 gap-2.5 sm:gap-3">
               {needs.map((need) => (
@@ -165,12 +160,15 @@ export function CareExplorer() {
                   type="button"
                   onClick={() => choose(need.index)}
                   className="need-choice group text-left"
+                  data-tone={need.index % 3}
                 >
                   <span className="flex items-center justify-between text-xs text-[#5a7364]">
-                    <span>{need.symbol}</span>
+                    <span className="need-icon">
+                      <CareIcon kind={need.index} className="h-6 w-6" />
+                    </span>
                     <span
                       aria-hidden="true"
-                      className="text-lg transition-transform group-hover:translate-x-1"
+                      className="text-lg text-[#526158] transition-transform group-hover:translate-x-1"
                     >
                       ↗
                     </span>
@@ -178,7 +176,7 @@ export function CareExplorer() {
                   <span className="mt-3 block text-sm font-semibold leading-snug">
                     {need.label}
                   </span>
-                  <span className="mt-1 hidden text-xs leading-relaxed text-[#586960] sm:block">
+                  <span className="mt-1 block text-xs leading-relaxed text-[#586960]">
                     {need.hint}
                   </span>
                 </button>
@@ -189,7 +187,7 @@ export function CareExplorer() {
                 href={whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex min-h-16 items-center justify-between gap-3 rounded-xl bg-[#eff3ed] px-4 py-3 text-sm font-medium"
+                className="mt-4 flex min-h-16 items-center justify-between gap-3 rounded-2xl bg-[#f8f5ef] px-4 py-3 text-sm font-medium"
               >
                 <span>
                   No sé por dónde empezar
@@ -203,7 +201,7 @@ export function CareExplorer() {
           </>
         )}
       </div>
-      <div className="border-t border-[#dce4df] px-5 py-3 text-xs text-[#66746b] sm:px-7">
+      <div className="px-5 pb-5 text-xs text-[#66746b] sm:px-7">
         Puedes explorar sin compartir datos personales.
       </div>
     </section>

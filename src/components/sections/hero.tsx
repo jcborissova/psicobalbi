@@ -14,7 +14,9 @@ export function HeroSection() {
             </p>
             <h1 className="mt-4 max-w-[15ch] text-[2.1rem] font-semibold leading-[1.12] tracking-[-.055em] sm:text-5xl lg:mt-6 lg:text-[3.8rem]">
               Tu próximo paso empieza{" "}
-              <span className="text-[#658067]">contigo.</span>
+              <span className="font-heading italic font-medium text-[#658067]">
+                contigo.
+              </span>
             </h1>
             <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-[#526158] sm:text-base">
               No necesitas tener todo resuelto. Encuentra un espacio para lo que
